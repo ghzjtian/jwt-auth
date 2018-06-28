@@ -24,8 +24,13 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
+        Route::pattern('id','[0-9]+');
+
+        Route::model('user_model',\App\User::class);
+        Route::bind('email', function($value) {
+            return \App\User::where('email', $value)->first();
+        });
     }
 
     /**

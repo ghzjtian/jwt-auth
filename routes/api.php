@@ -29,5 +29,19 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::post('get_data','AuthController@getData');
 
+});
+
+
+Route::get('users/{user}',function(App\User $user){
+    dd($user);
+});
+
+Route::get('users/{user_model}',function(App\User $user){
+    dd($user);
+});
+
+Route::get('users_email/{email}',function(App\User $user){
+    dd($user);
 });
