@@ -10,12 +10,13 @@
 
 * 4.账号的密码为 123456.
 
-* 5.发现的问题
+* 5.发现的问题(在 web 端登录后，session 没有传递的问题)
     * 1.在 `config/auth.php` 中改变了默认的 `guard` ,如把 `web` 改为 `api`,则 `api` 方面登录拿到 `token` 后，可以正常地用 `token` 拿到数据，但是在浏览器中的登录会被弹出，一直登录不上，反之改变 `default/guard` 为 `web` 也一样.
     * 2.解决方法: 
         * 1.在 `config/auth.php` 中修改 `default->guard` 为 `web`
         * 2.在 `APP\Http\Controller\AuthController` 中加入 
-        ``` protected function guard()
+        ``` 
+        protected function guard()
                {
                    return Auth::guard('api');
                }
