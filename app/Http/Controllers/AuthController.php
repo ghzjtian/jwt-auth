@@ -89,4 +89,10 @@ class AuthController extends Controller
 
         return response()->json(['message' => '成功拿到所需的数据']);
     }
+
+    protected function guard()
+    {
+        return Auth::guard('api');
+    }
+
 }
